@@ -1,0 +1,35 @@
+{
+  "name": "local-interface",
+  "version": "0.0.1",
+  "description": "Local web interface",
+  "main": "./src/serve.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piarm/local-interface.git"
+  },
+  "author": "Julien Vincent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piarm/local-interface/issues"
+  },
+  "homepage": "https://github.com/piarm/local-interface#readme",
+  "dependencies": {
+    "babel-runtime": "^5.8.20",
+    "babelify": "^6.3.0",
+    "compression": "^1.6.0",
+    "express": "^4.13.3",
+    "history": "^1.9.1",
+    "lodash": "^3.10.1",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-redux": "^3.0.0",
+    "react-router": "^1.0.0-rc1",
+    "react-tap-event-plugin": "^0.1.7",
+    "redux": "^3.0.0",
+    "redux-thunk": "^1.0.0",
+    "storm-serve": "https://github.com/projectstorm/serve.git"
+  }
+}

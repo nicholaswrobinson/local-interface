@@ -4,11 +4,12 @@
  |--------------------------------------------------------------------------
  **/
 
-module.exports = function (system) {
+module.exports.default = function (system) {
     return {
         settings: {
-            run: true,
+            enabled: true,
             port: 8000,
+            logLevel: "INFO"
         },
 
         init: function () {
@@ -18,7 +19,7 @@ module.exports = function (system) {
             compression = require('compression'),
             path = require('path'),
             merge = require('lodash/object/merge');
-            merge(this.settings, system.settings.localInterface);
+            this.settings = merge(this.settings, system.settings);
 
             var serve_conf = {
                 mappings: {
@@ -44,14 +45,17 @@ module.exports = function (system) {
 
                 aliases: {
                     "factories": __dirname + '/factories/factories.js'
-                }
+                },
+                loglevel: this.settings.logLevel,
             };
 
-            server.use(compression());
-            server.use(serve.main(serve_conf));
-            server.use(serve.scss());
+            if (this.settings.enabled) {
+                system.log.debug("starting local-interface web server");
 
-            if (this.settings.run) {
+                server.use(compression());
+                server.use(serve.main(serve_conf));
+                server.use(serve.scss());
+
                 server.listen(this.settings.port);
             }
         }
